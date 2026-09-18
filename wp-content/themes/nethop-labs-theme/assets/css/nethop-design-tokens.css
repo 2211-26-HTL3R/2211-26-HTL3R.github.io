@@ -1,0 +1,761 @@
+/* =========================================================
+   NETHOP LABS – Design Tokens
+   1:1 aus Figma ausgelesen (Figma MCP: get_design_context,
+   Datei "Web Prototyp", Frame "Desktop - 9" = Start-Seite)
+   In das Theme einbinden, z. B. via functions.php:
+   wp_enqueue_style( 'nethop-tokens', get_template_directory_uri() . '/assets/css/nethop-design-tokens.css' );
+   Inter-Font separat enqueuen (siehe Hinweis unten) – kein @import verwenden.
+   ========================================================= */
+
+:root {
+  /* Farben */
+  --nh-navy: #272757;              /* Kopfleiste, Überschriften, Buttons */
+  --nh-navy-hover: #34346f;        /* Hover-Zustand (nicht in Figma, sinnvoll ergänzt) */
+  --nh-bg: #eaf1fc;                /* heller Seitenhintergrund */
+  --nh-card-bg: #ffffff;           /* Karten / Boxen */
+  --nh-text-body: #000000;         /* Fließtext ist in Figma tatsächlich Schwarz */
+  --nh-shadow: 0 6px 20px rgba(39, 39, 87, 0.08); /* dezent ergänzt, in Figma kein Schatten definiert */
+
+  /* Typografie – Font: Inter (Bold / Semi Bold / Regular) */
+  --nh-font: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --nh-h1-size: clamp(1.9rem, 3.2vw, 3rem);        /* Figma: 48px / 700 */
+  --nh-h2-size: clamp(1.5rem, 2.6vw, 2.5rem);      /* Figma: 40px / 600 */
+  --nh-body-size: clamp(1.1rem, 2vw, 2.25rem);     /* Figma: 36px / 400 */
+  --nh-btn-font-size: clamp(1.1rem, 1.6vw, 2rem);  /* Figma: 32px / 600 */
+
+  /* Abstände / Radien / Maße – exakt aus Figma */
+  --nh-radius-lg: 20px;             /* Karte "Was dich erwartet" (Onboarding) */
+  --nh-radius-md: 10px;             /* Dashboard-Karten (Frame "Desktop - 1") */
+  --nh-radius-pill: 50px;           /* Button-Radius / Fortschrittsbalken */
+  --nh-container-max: 1212px;       /* Inhaltsbreite von Texten/Karte in Figma */
+  --nh-header-height: 201px;        /* Höhe der Kopfleiste */
+  --nh-btn-height: 77px;            /* Button-Höhe */
+
+  /* Dashboard-spezifisch (aus Figma-Frame "Desktop - 1") */
+  --nh-progress-track: #f3ecec;     /* Fortschrittsbalken Hintergrund */
+  --nh-progress-fill: #434383;      /* Fortschrittsbalken Füllung (bewusst heller/anders als --nh-navy) */
+}
+
+/* Basis-Reset für diese Templates */
+.nh-page * { box-sizing: border-box; }
+
+.nh-page {
+  font-family: var(--nh-font);
+  background: var(--nh-bg);
+  color: var(--nh-text-body);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.nh-container {
+  max-width: var(--nh-container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Kopfleiste (Logo, ggf. Navigation) */
+.nh-header {
+  background: var(--nh-navy);
+  min-height: var(--nh-header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.nh-logo img {
+  height: 130px;   /* Figma: 194px auf 1440px Breite -> proportional auf reale Header-Höhe skaliert */
+  width: auto;
+  display: block;
+}
+
+/* Überschriften */
+.nh-h1 {
+  color: var(--nh-navy);
+  font-size: var(--nh-h1-size);
+  font-weight: 700;   /* Figma: Inter Bold */
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+}
+
+.nh-h2 {
+  color: var(--nh-navy);
+  font-size: var(--nh-h2-size);
+  font-weight: 600;   /* Figma: Inter Semi Bold */
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.nh-lead {
+  font-size: var(--nh-body-size);
+  font-weight: 400;   /* Figma: Inter Regular */
+  line-height: 1.5;
+  color: var(--nh-text-body);
+  max-width: 68ch;
+}
+
+/* Karte / Box */
+.nh-card {
+  background: var(--nh-card-bg);
+  border-radius: var(--nh-radius-lg);
+  box-shadow: var(--nh-shadow);
+  padding: 2.25rem 2.5rem;
+}
+
+.nh-card-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.nh-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--nh-body-size);
+  font-weight: 400;
+  padding: 0.6rem 0;
+}
+
+.nh-card-list .nh-emoji {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+/* Buttons */
+.nh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nh-navy);
+  color: #fff;
+  font-weight: 600;   /* Figma: Inter Semi Bold */
+  font-size: var(--nh-btn-font-size);
+  min-height: var(--nh-btn-height);
+  padding: 0.75rem 2.5rem;
+  border-radius: var(--nh-radius-pill);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.nh-btn:hover {
+  background: var(--nh-navy-hover);
+}
+
+.nh-btn:active {
+  transform: scale(0.98);
+}
+
+.nh-btn:focus-visible {
+  outline: 3px solid #a9b8ff;
+  outline-offset: 2px;
+}
+
+.nh-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+/* =========================================================
+   App-Header mit Navigation
+   (Frame "Desktop - 1" u.a. – Dashboard, Lernmodule, Quiz, ...)
+   ========================================================= */
+.nh-app-header {
+  background: var(--nh-navy);
+  min-height: var(--nh-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+
+.nh-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nh-nav a {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem; /* Figma: 24px */
+  text-decoration: none;
+}
+
+.nh-nav a:hover {
+  text-decoration: underline;
+}
+
+.nh-nav a.is-active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.nh-nav-profile {
+  margin-left: auto;
+}
+
+/* =========================================================
+   Dashboard – Kartenraster, dunkle Karten, Fortschrittsbalken
+   ========================================================= */
+.nh-h1-page-title {
+  color: var(--nh-navy);
+  font-size: var(--nh-h1-size);
+  font-weight: 700;
+  margin: 0 0 2rem;
+}
+
+.nh-grid-2 {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+
+@media (max-width: 900px) {
+  .nh-grid-2 { grid-template-columns: 1fr; }
+}
+
+.nh-card-light {
+  background: var(--nh-card-bg);
+  border-radius: var(--nh-radius-md);
+  padding: 1.75rem 2rem;
+}
+
+.nh-card-light h2 {
+  color: var(--nh-navy);
+  font-size: 1.6rem; /* Figma: 32px */
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.nh-card-light p {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem; /* Figma: 20px */
+}
+
+.nh-card-light ul {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.nh-card-light li {
+  color: var(--nh-navy);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.35rem 0;
+}
+
+.nh-card-dark {
+  background: var(--nh-navy);
+  color: #fff;
+  border-radius: var(--nh-radius-md);
+  padding: 1.75rem 2rem;
+}
+
+.nh-card-dark h2 {
+  font-size: 1.6rem; /* Figma: 32px */
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+}
+
+.nh-card-dark p {
+  font-size: 1.6rem; /* Figma: 32px, Medium */
+  font-weight: 500;
+  margin: 0 0 0.4rem;
+}
+
+.nh-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.75rem 0;
+}
+
+.nh-progress-track {
+  flex: 1;
+  height: 37px;
+  background: var(--nh-progress-track);
+  border-radius: var(--nh-radius-pill);
+  overflow: hidden;
+}
+
+.nh-progress-fill {
+  height: 100%;
+  background: var(--nh-progress-fill);
+  border-radius: var(--nh-radius-pill);
+}
+
+.nh-progress-label {
+  color: var(--nh-navy);
+  font-weight: 600;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Lernmodule – Kachel-Grid mit Fortschrittsbalken
+   ========================================================= */
+.nh-module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+@media (max-width: 900px) {
+  .nh-module-grid { grid-template-columns: 1fr; }
+}
+
+.nh-module-card {
+  background: var(--nh-progress-track); /* #f3ecec, wie in Figma */
+  border-radius: var(--nh-radius-lg);
+  padding: 1.75rem;
+  text-align: center;
+}
+
+.nh-module-card h3 {
+  color: var(--nh-navy);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+}
+
+.nh-module-card .nh-module-pct {
+  color: var(--nh-navy);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+
+.nh-module-card .nh-progress-track {
+  background: #fff;
+  border: 2px solid var(--nh-navy);
+}
+
+/* =========================================================
+   Formulare – Anmelden / Registrieren / Passwort zurücksetzen
+   ========================================================= */
+.nh-auth-card {
+  background: var(--nh-card-bg);
+  border-radius: 25px;
+  padding: 3rem 9%;               /* Figma: großzügiger Innenabstand links/rechts, nicht nur 3rem */
+  max-width: var(--nh-container-max);
+  margin: 0 auto;
+}
+
+.nh-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.nh-form-group label {
+  display: block;
+  color: #767474;
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.nh-form-group input {
+  width: 100%;
+  border: 1px solid var(--nh-navy);
+  border-radius: 20px;
+  padding: 1.1rem 1.5rem;
+  font-size: 1.2rem;
+  font-family: var(--nh-font);
+  color: #333;
+}
+
+.nh-form-group input:focus {
+  outline: 2px solid var(--nh-navy);
+  outline-offset: 1px;
+}
+
+/* Variante: Label links, Input rechts (Registrieren-Screen) */
+.nh-form-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.nh-form-row label {
+  flex: 0 0 260px;
+  color: #767474;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.nh-form-row input {
+  flex: 0 1 68%;   /* Figma: Input ~48% der Kartenbreite, ~68% des verbleibenden Platzes nach der Label-Spalte */
+  max-width: 620px;
+  border: 1px solid var(--nh-navy);
+  border-radius: 20px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  font-family: var(--nh-font);
+}
+
+.nh-form-submit {
+  display: block;
+  width: 100%;
+  background: var(--nh-navy);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: var(--nh-font);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.nh-form-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.nh-form-link-btn {
+  border: 1px solid var(--nh-navy);
+  border-radius: 20px;
+  padding: 0.6rem 1.5rem;
+  color: var(--nh-navy);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  background: #fff;
+}
+
+/* =========================================================
+   Quiz – Übersicht, Frage, Antwort richtig/falsch, Ergebnis
+   ========================================================= */
+.nh-quiz-page { background: #e7f2ff; }
+
+.nh-quiz-stats {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.nh-quiz-stat-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  flex: 1;
+  min-width: 220px;
+}
+
+.nh-quiz-stat-box .nh-label { color: var(--nh-navy); font-weight: 700; font-size: 1.1rem; }
+.nh-quiz-stat-box .nh-value { color: var(--nh-navy); font-weight: 700; font-size: 1.1rem; margin-top: 0.25rem; }
+
+.nh-quiz-list-card {
+  background: var(--nh-navy);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.6rem;
+}
+
+.nh-quiz-list-card h2 { font-size: 1.8rem; font-weight: 700; margin: 0 0 1rem; }
+
+.nh-quiz-list-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 2rem;
+}
+
+.nh-quiz-list-columns ul { list-style: disc; margin: 0; padding-left: 1.5rem; }
+.nh-quiz-list-columns li { font-size: 1.1rem; padding: 0.3rem 0; }
+.nh-quiz-list-columns li.is-best { color: #34c759; }
+
+.nh-quiz-goal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+
+@media (max-width: 900px) { .nh-quiz-goal-grid, .nh-quiz-stats { grid-template-columns: 1fr; } }
+
+.nh-quiz-goal-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.75rem 2rem;
+}
+
+.nh-quiz-goal-card h3 { color: var(--nh-navy); font-weight: 700; font-size: 1.4rem; margin: 0 0 0.75rem; }
+.nh-quiz-goal-card p { margin: 0 0 0.5rem; }
+
+.nh-quiz-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2.5rem 3rem;
+  max-width: var(--nh-container-max);
+  margin: 0 auto;
+}
+
+.nh-quiz-question { color: var(--nh-navy); font-weight: 700; font-size: 1.7rem; margin: 0 0 0.5rem; }
+.nh-quiz-subtext { font-size: 1.3rem; margin: 0 0 1.5rem; }
+
+.nh-quiz-answer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--nh-navy);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  font-size: 1.5rem;
+  font-family: var(--nh-font);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nh-quiz-answer .nh-radio {
+  width: 24px; height: 24px;
+  border: 2px solid var(--nh-navy);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.nh-quiz-answer.is-selected .nh-radio { background: var(--nh-navy); }
+
+.nh-quiz-feedback {
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+}
+
+.nh-quiz-feedback.is-correct {
+  background: #a7d7ab;
+  border: 1px solid #396740;
+}
+
+.nh-quiz-feedback.is-wrong {
+  background: #d7a7a7;
+  border: 1px solid #430202;
+}
+
+.nh-quiz-result-score {
+  text-align: center;
+  color: var(--nh-navy);
+  font-weight: 700;
+  font-size: 4.5rem;
+  margin: 1rem 0 0;
+}
+
+.nh-quiz-result-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.nh-quiz-result-bar-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.nh-quiz-result-bar-track {
+  background: var(--nh-progress-track);
+  border-radius: 20px;
+  height: 40px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.nh-quiz-result-bar-fill {
+  background: var(--nh-navy);
+  height: 100%;
+  border-radius: 20px;
+}
+
+.nh-quiz-result-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.nh-quiz-result-box {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.nh-quiz-result-box.is-correct { background: #c6ecc6; border: 1px solid #074302; }
+.nh-quiz-result-box.is-wrong   { background: #e39c9c; border: 1px solid #430202; }
+.nh-quiz-result-box.is-score   { background: #9ca0e3; border: 1px solid #140243; opacity: 0.85; }
+.nh-quiz-result-box .nh-big { display: block; font-size: 1.7rem; margin-bottom: 0.3rem; }
+
+.nh-quiz-result-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nh-quiz-result-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--nh-navy);
+  border-radius: 8px;
+  padding: 0.9rem 1.5rem;
+  color: var(--nh-navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nh-quiz-result-actions a.is-primary { background: var(--nh-navy); color: #fff; }
+
+/* =========================================================
+   Mein Profil
+   ========================================================= */
+.nh-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 25px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.6rem;
+}
+
+.nh-profile-row .nh-icon { font-size: 2.5rem; line-height: 1; }
+
+.nh-profile-row h3 { margin: 0; font-size: 1.6rem; font-weight: 600; color: #000; }
+.nh-profile-row p { margin: 0.25rem 0 0; font-size: 1.3rem; color: #000; }
+
+.nh-profile-btn {
+  display: block;
+  width: 100%;
+  background: var(--nh-navy);
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.nh-profile-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  font-size: 1.3rem;
+}
+
+.nh-profile-setting + .nh-profile-setting { border-top: 1px solid #eee; }
+
+.nh-toggle {
+  width: 44px;
+  height: 22px;
+  background: #d9d9d9;
+  border-radius: 20px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+}
+
+.nh-toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 18px; height: 18px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.nh-toggle.is-on { background: var(--nh-navy); }
+.nh-toggle.is-on::after { left: auto; right: 2px; }
+
+/* =========================================================
+   Lernplan – Wochenkalender
+   ========================================================= */
+.nh-planner-head {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.nh-planner-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--nh-navy);
+  flex-wrap: wrap;
+}
+
+.nh-planner-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nh-planner-legend .nh-dot {
+  width: 22px; height: 22px; border-radius: 4px; display: inline-block;
+}
+
+.nh-planner-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.nh-planner-table th, .nh-planner-table td {
+  border: 1px solid #d9dee8;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--nh-navy);
+}
+
+.nh-planner-table th { font-size: 1.4rem; padding: 0.9rem 0.8rem; }
+.nh-planner-table td.nh-slot-busy { background: #a77373; color: #fff; }
+.nh-planner-table td.nh-slot-suggest { background: #7387a7; color: #fff; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .nh-container { padding: 0 1.25rem; }
+  .nh-card, .nh-card-light, .nh-card-dark, .nh-auth-card, .nh-quiz-card { padding: 1.5rem; }
+  .nh-btn-row { justify-content: center; }
+  .nh-logo img { height: 72px; }
+  .nh-app-header { justify-content: center; text-align: center; }
+  .nh-nav-profile { margin-left: 0; }
+  .nh-form-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .nh-form-row label { flex: none; }
+  .nh-form-row input { flex: none; max-width: 100%; width: 100%; }
+  .nh-quiz-result-boxes { grid-template-columns: 1fr; }
+}
