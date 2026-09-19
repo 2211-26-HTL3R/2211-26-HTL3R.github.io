@@ -1,6 +1,6 @@
 /* =========================================================
    NETHOP LABS – Design Tokens
-   1:1 aus Figma ausgelesen (Figma MCP: get_design_context,
+ 
    Datei "Web Prototyp", Frame "Desktop - 9" = Start-Seite)
    In das Theme einbinden, z. B. via functions.php:
    wp_enqueue_style( 'nethop-tokens', get_template_directory_uri() . '/assets/css/nethop-design-tokens.css' );
@@ -745,6 +745,79 @@
 .nh-planner-table th { font-size: 1.4rem; padding: 0.9rem 0.8rem; }
 .nh-planner-table td.nh-slot-busy { background: #a77373; color: #fff; }
 .nh-planner-table td.nh-slot-suggest { background: #7387a7; color: #fff; }
+
+
+/* =========================================================
+   Unser Team – Foto-Karten + Kontakt-Box
+   ========================================================= */
+.nh-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin: 2rem 0 3rem;
+}
+
+@media (max-width: 900px) {
+  .nh-team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .nh-team-grid { grid-template-columns: 1fr; }
+}
+
+.nh-team-card {
+  text-align: center;
+  min-width: 0; 
+}
+
+.nh-team-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 3px solid var(--nh-navy);
+  border-radius: var(--nh-radius-md);
+  background: var(--nh-progress-track);
+  display: block;
+  margin-bottom: 0.85rem;
+}
+
+.nh-team-name {
+  color: var(--nh-navy);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.nh-team-role {
+  color: var(--nh-text-body);
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin: 0.15rem 0;
+}
+
+.nh-team-email {
+  font-size: 1.1rem;
+  margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.nh-contact-box {
+  background: var(--nh-card-bg);
+  border-radius: var(--nh-radius-md);
+  box-shadow: var(--nh-shadow);
+  padding: 2.5rem 3rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.nh-contact-box p {
+  margin: 0 0 0.75rem;
+  color: var(--nh-text-body);
+  font-size: 1.25rem;
+}
+.nh-contact-box p:last-child {
+  margin-bottom: 0;
+}
 
 /* Responsive */
 @media (max-width: 640px) {
