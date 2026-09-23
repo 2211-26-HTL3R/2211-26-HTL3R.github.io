@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NetHop Labs</title>
+    <title>Registrierung – NetHop Labs</title>
 <meta name="robots" content="max-image-preview:large">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 
@@ -65,183 +65,75 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script id="jquery-migrate-js" src="https://nethoplabs.at/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nethoplabs.at/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.1.1">
-<link rel="canonical" href="https://nethoplabs.at/">
-<link rel="shortlink" href="https://nethoplabs.at/">
+<link rel="canonical" href="https://nethoplabs.at/app/registrierung/">
+<link rel="shortlink" href="https://nethoplabs.at/?p=49">
 <link rel="icon" href="https://nethoplabs.at/wp-content/uploads/2026/09/cropped-nethop-labs-logo-32x32.png" sizes="32x32">
 <link rel="icon" href="https://nethoplabs.at/wp-content/uploads/2026/09/cropped-nethop-labs-logo-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="https://nethoplabs.at/wp-content/uploads/2026/09/cropped-nethop-labs-logo-180x180.png">
 <meta name="msapplication-TileImage" content="https://nethoplabs.at/wp-content/uploads/2026/09/cropped-nethop-labs-logo-270x270.png">
 </head>
-<body class="home wp-singular page-template page-template-page-templates page-template-page-projekt page-template-page-templatespage-projekt-php page page-id-67 wp-theme-nethop-labs-theme">
+<body class="wp-singular page-template page-template-page-templates page-template-template-Registrierung page-template-page-templatestemplate-Registrierung-php page page-id-49 page-child parent-pageid-47 wp-theme-nethop-labs-theme">
 
 <div class="nh-page">
-
-	    
-<style>
-.nh-app-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem 2rem;
-}
-
-/* Logo */
-.nh-logo img {
-    height: 150px;
-    width: auto;
-    display: block;
-}
-
-/* Navigation rechts */
-.nh-nav {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-    margin: 0 30px 0 auto;
-    padding: 0;
-}
-
-/* Navigation Links */
-.nh-nav a {
-    text-decoration: none;
-}
-
-/* Aktiver Menüpunkt */
-.nh-nav a.is-active {
-    text-decoration: underline;
-}
-</style>
-
-<header class="nh-app-header">
-
-    <!-- Logo links -->
+    <header class="nh-app-header">
     <div class="nh-logo">
         <a href="https://nethoplabs.at/">
             <img src="https://nethoplabs.at/wp-content/themes/nethop-labs-theme/assets/img/nethop-labs-logo.png" alt="Nethop Labs Logo">
         </a>
     </div>
 
-    <!-- Navigation rechts -->
     <ul class="nh-nav">
+                    <li>
+                <a href="https://nethoplabs.at/dashboard/" class="">Dashboard</a>
+            </li>
+                    <li>
+                <a href="https://nethoplabs.at/lernmodule/" class="">Lernmodule</a>
+            </li>
+                    <li>
+                <a href="https://nethoplabs.at/quiz-uebersicht/" class="">Quiz</a>
+            </li>
+                    <li>
+                <a href="https://nethoplabs.at/to-do/" class="">To-Do</a>
+            </li>
+                    <li>
+                <a href="https://nethoplabs.at/lernplan/" class="">Lernplan</a>
+            </li>
+                    <li>
+                <a href="https://nethoplabs.at/leaderboard/" class="">Leaderboard</a>
+            </li>
+            </ul>
 
-        <!-- NetHop Labs -->
-        <li>
-            <a href="https://nethoplabs.at/" class="">
-                NetHop Labs
-            </a>
-        </li>
-
-        <!-- Team -->
-        <li>
-            <a href="https://nethoplabs.at/team/" class="">
-                Team
-            </a>
-        </li>
-
-        <!-- Impressum -->
-        <li>
-            <a href="https://nethoplabs.at/impressum/" class="">
-                Impressum
-            </a>
-        </li>
-
-    </ul>
-
+    <div class="nh-nav-profile">
+        <a href="https://nethoplabs.at/profil/" class="">Profil</a>
+    </div>
 </header>
     <main class="nh-container" style="padding-top: 3rem; padding-bottom: 3rem;">
+        <h1 class="nh-h1-page-title">Registrieren</h1>
 
-        <h1 class="nh-h1">Nethop Labs</h1>
-        <h2 class="nh-h2">Über das Projekt</h2>
+        <div class="nh-auth-card">
+            <!-- Platzhalter-Formular: method/action durch echte Registrierungs-Logik ersetzen -->
+            <form method="post" action="#">
+                <div class="nh-form-row">
+                    <label for="nh-username">Benutzername</label>
+                    <input type="text" id="nh-username" name="benutzername" required>
+                </div>
+                <div class="nh-form-row">
+                    <label for="nh-email">E-Mail</label>
+                    <input type="email" id="nh-email" name="email" required>
+                </div>
+                <div class="nh-form-row">
+                    <label for="nh-password">Passwort</label>
+                    <input type="password" id="nh-password" name="passwort" required>
+                </div>
+                <div class="nh-form-row">
+                    <label for="nh-password2">Passwort nochmal</label>
+                    <input type="password" id="nh-password2" name="passwort_wdh" required>
+                </div>
 
-        <p class="nh-lead" style="font-size: 24px; line-height: 1.5;">
-             NetHop Labs ist eine interaktive Lernplattform zur Vorbereitung auf die
-                Cisco Certified Network Professional (CCNP)-Zertifizierung.
-                Das Projekt verbindet theoretisches Wissen mit praktischen Netzwerkübungen
-                und unterstützt Lernende dabei, ihre Kenntnisse strukturiert und praxisnah
-                zu erweitern.
-        </p>
-		 <p class="nh-lead" style="font-size: 24px; line-height: 1.5;">
-                Die Plattform kombiniert Quizfragen, Lernpläne und praktische
-                Netzwerk-Labs. Dadurch können Lernende ihr Wissen überprüfen,
-                gezielt üben und ihren persönlichen Lernfortschritt verfolgen.
-        </p>
-		
-		<p class="nh-lead" style="font-size: 24px; line-height: 1.5;">
-			Das Ziel ist eine voll funktionsfähige, benutzerfreundliche Web-Anwendung, die auf der von unserem Projektpartner Cancom zur Verfügung gestellten Server-Infrastruktur betrieben und zur praxisnahen Weiterbildung eingesetzt wird.
-		</p>
-
-        
-        <h2 class="nh-h2">Inhalte des Projekts</h2>
-
-        <div class="nh-grid-2">
-
-            <section class="nh-card-light">
-                <h2>Quizsystem</h2>
-
-                <p>
-                    Über 1.000 selbst erstellte Fragen decken verschiedene Bereiche
-                    der Netzwerktechnik ab. Dazu gehören unter anderem Routing,
-                    Layer 2, Security, Wireless und Netzwerkarchitekturen.
-                </p>
-            </section>
-
-
-            <section class="nh-card-light">
-                <h2>Lernplan</h2>
-
-                <p>
-                    Der Lernplan hilft dabei, die Vorbereitung strukturiert zu
-                    organisieren und Lernziele Schritt für Schritt zu bearbeiten.
-                </p>
-            </section>
-
-
-			<section class="nh-card-light">
-                <h2>Webplattform</h2>
-
-                <p>
-                    Alle Funktionen werden über eine zentrale Webplattform bereitgestellt.
-                Benutzer können sich registrieren, anmelden und auf ihre persönlichen
-                Lerninhalte und Fortschritte zugreifen.
-                </p>
-            </section>
-			
-
-
-            <section class="nh-card-light">
-                <h2>Automatische Auswertung</h2>
-
-                <p>
-                    Quiz- und Lab-Ergebnisse werden ausgewertet, sodass Lernende
-                    ihren Fortschritt nachvollziehen und ihre Stärken und Schwächen
-                    erkennen können.
-                </p>
-            </section>
-			
-			<section class="nh-card-light">
-                <h2>Lernfortschritt</h2>
-
-                <p>
-                    Der persönliche Lernfortschritt zeigt den aktuellen Stand der Vorbereitung. Abgeschlossene Quizze, Lernmodule und Labs 
-werden erfasst, sodass Lernende jederzeit sehen können, welche Inhalte bereits bearbeitet wurden und welche Aufgaben noch offen sind.
-                </p>
-            </section>
-			
-			
-			<section class="nh-card-light">
-                <h2>Netzwerk-Labs</h2>
-
-                <p>
-                    Mit vorbereiteten Containerlab-Topologien können theoretische
-                    Inhalte praktisch angewendet und Netzwerkkonfigurationen
-                    ausprobiert werden.
-                </p>
-            </section>
+                <button type="submit" class="nh-form-submit" style="margin-top: 1rem;">Registrieren</button>
+            </form>
         </div>
-
-
     </main>
-
 </div>
 
 <script type="speculationrules">
